@@ -1,0 +1,18 @@
+h1. Example Usage
+
+bq. from netcat import *
+netcat = Netcat(someHost, somePort)
+netcat.open()
+try:
+netcat.sendall(msg)
+except error:
+netcat.reconnect()
+netcat.close()
+
+_Indentation within the try/except block are missing due to textism issues_
+
+h1. Notices
+
+Netcat constructor accepts a third boolean parameter to determine whether errors which occur during open/closing of a socket are throw or handled.  They are thrown if true.  Default is false.
+
+Furthermore, user is responsible for handling possible errors on calling sendall(msg).  An example of how to handle this is shown above.
